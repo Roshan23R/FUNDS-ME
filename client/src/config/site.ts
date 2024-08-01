@@ -8,7 +8,7 @@ export const siteConfig = {
   mainNav: [
     {
       title: 'Committee-List',
-      href: '/'
+      href: '/committees'
     },
     {
       title: 'Features',
@@ -20,11 +20,6 @@ export const siteConfig = {
     }
   ],
   sideNav: [
-    {
-      title: 'Home',
-      href: '/home',
-      icon: 'GameController'
-    },
     {
       title: 'Committees',
       href: '/committees',

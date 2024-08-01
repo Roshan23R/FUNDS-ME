@@ -6,7 +6,7 @@ type TableUiRepayedProps = {
     paid_amount: string;
     date?: string;
     time?: string;
-    transaction_ref_id: string;
+    transaction_ref: string;
   }[];
 };
 
@@ -36,7 +36,7 @@ const TableUiRepayed: FC<TableUiRepayedProps> = ({ headings, rowsData }) => {
               {row.date} / {row.time}
             </td>
             <td className="whitespace-no-wrap px-6 py-4 text-right text-sm text-white lg:text-left">
-              {row.transaction_ref_id}
+              {row.transaction_ref}
             </td>
           </tr>
         ))}

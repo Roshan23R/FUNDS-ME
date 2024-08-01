@@ -6,7 +6,7 @@ interface MemberCardProps {
   data: any;
 }
 
-const MemberCard = ({ data }) => {
+const MemberCard: React.FC<MemberCardProps> = ({ data }) => {
     const router = useRouter();
   return (
     <>

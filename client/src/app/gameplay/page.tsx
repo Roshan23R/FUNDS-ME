@@ -19,13 +19,13 @@ export default function GamePlay() {
             <div className="game-play-bg relative w-1/2 border-[1px] border-[#57A0C5]">
               <div className="absolute bottom-[-44px]  left-[5rem] flex h-[20%] w-2/3 gap-3">
                 <div className="flex  h-[100%] w-1/3 items-center justify-center rounded-md shadow-md overflow-hidden">
-                  <Image src="/images/bedroom.png" width={100} height={100} />
+                  <Image src="/images/bedroom.png" width={100} height={100} alt='bedroom'/>
                 </div>
                 <div className="flex  h-[100%] w-1/3 items-center justify-center rounded-md shadow-md overflow-hidden">
-                  <Image src="/images/bedroom.png" width={100} height={100} />
+                  <Image src="/images/bedroom.png" width={100} height={100} alt='bedroom'/>
                 </div>
                 <div className="flex  h-[100%] w-1/3 items-center justify-center rounded-md shadow-md overflow-hidden">
-                  <Image src="/images/bedroom.png" width={100} height={100} />
+                  <Image src="/images/bedroom.png" width={100} height={100} alt='bedroom'/>
                 </div>
               </div>
             </div>
@@ -43,8 +43,8 @@ export default function GamePlay() {
 
                 <p className="font-bold leading-10">Key Features</p>
                 <p className="text-sm">
-                  Private balcony. Communal roof terrace. Resident's concierge service. Close
-                  proximity to green spaces. 999 year lease with peppercorn ground rent
+                {`  Private balcony. Communal roof terrace. Resident's concierge service. Close
+                  proximity to green spaces. 999 year lease with peppercorn ground rent`}
                 </p>
                 <input
                   type="text"

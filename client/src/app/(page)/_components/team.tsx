@@ -11,7 +11,7 @@ export function TeamSection() {
     <section className="container mx-auto flex w-full max-w-screen-2xl flex-col items-center justify-center gap-[100px] px-[100px] pb-[150px] pt-[100px]">
       <div className="flex flex-col items-center gap-4 text-center">
         <h3 className="font-heading text-[2.3rem]/[1.8rem] font-medium">Committee Formation</h3>
-        <p className="text-[1.5rem]/[1.5rem] font-light mt-4">Let's Help Each Other</p>
+        <p className="text-[1.5rem]/[1.5rem] font-light mt-4">{`Let's Help Each Other`}</p>
       </div>
       <TeamCard name="SME 6" title="Hitachi" img="/images/teams/richard-x.svg" />
 

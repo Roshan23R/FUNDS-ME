@@ -9,7 +9,7 @@ export function SiteHeader() {
     <header className="w-full backdrop-blur-[8px]">
       <div className="container mx-auto flex w-full  max-w-screen-2xl items-center justify-between py-4 ">
       
-          <Image src="/images/logo-fund-removebg.png" width={400} height={260} />
+          <Image src="/images/logo-fund-removebg.png" width={400} height={260} alt='logo'/>
     
 
         <nav className="flex items-center gap-10">

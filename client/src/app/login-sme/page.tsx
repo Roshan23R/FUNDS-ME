@@ -31,7 +31,7 @@ export default function Page() {
               <input
                 type="password"
                 id="password"
-                className="rounded border bg-transparent border-gray-300 px-4 py-2 transition duration-300 focus:border-transparent focus:outline-none focus:ring-4 focus:ring-blue-200"
+                className="rounded border border-gray-300 bg-transparent px-4 py-2 transition duration-300 focus:border-transparent focus:outline-none focus:ring-4 focus:ring-blue-200"
               />
             </div>
 

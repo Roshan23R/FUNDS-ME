@@ -46,24 +46,25 @@ export default function Page() {
     aadhar_number: ''
   });
 
-  const [udhyamFile, setUdhyamFile] = useState(null);
-  const [taxReturnFile, setTaxReturnFile] = useState(null);
+  const [udhyamFile, setUdhyamFile] = useState('');
+  const [taxReturnFile, setTaxReturnFile] = useState('');
 
   // Handle file input change
-  const handleUdhyamFileChange = event => {
+  const handleUdhyamFileChange = (event: any) => {
     const file = event.target.files[0];
     if (file) {
       setUdhyamFile(URL.createObjectURL(file));
     }
   };
-  const handleTaxReturnFileChange = event => {
+  const handleTaxReturnFileChange = (event: any) => {
     const file = event.target.files[0];
     if (file) {
       setTaxReturnFile(URL.createObjectURL(file));
     }
-  }
+  };
 
-  const checkUdhyamVerification = async () => {
+  const checkUdhyamVerification = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     let id = toast.loading('Verifying Udyam Certificate...');
     try {
       await delay(5000);
@@ -73,9 +74,10 @@ export default function Page() {
       console.error(error);
       toast.error('An error occurred', { id });
     }
-  }
+  };
 
-  const checkTaxReturnVerification = async () => {
+  const checkTaxReturnVerification = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     let id = toast.loading('Verifying Tax Return...');
     try {
       await delay(5000);
@@ -86,7 +88,7 @@ export default function Page() {
       console.error(error);
       toast.error('An error occurred', { id });
     }
-  }
+  };
   const handlePanOTP = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPanOtpData({
       ...panOtpData,
@@ -104,7 +106,7 @@ export default function Page() {
     });
   };
 
-  const registerSmeBankDetails = async (e: React.FormEvent<HTMLFormElement>) => {
+  const registerSmeBankDetails = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (
       !smeBankDetails.acc_no ||
@@ -130,7 +132,7 @@ export default function Page() {
       [e.target.name]: e.target.value
     });
   };
-  const onClickHandleAddressDetails = async (e: React.FormEvent<HTMLFormElement>) => {
+  const onClickHandleAddressDetails = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     let id = toast.loading('Saving Address Details...');
     try {
@@ -163,8 +165,9 @@ export default function Page() {
   };
 
   const handleRegisterFounderVerificationData = async (
-    e: React.FormEvent<HTMLFormElement>
+    e: React.MouseEvent<HTMLButtonElement>
   ) => {
+    e.preventDefault();
     if (!founderVerificationData.pan_number || !founderVerificationData.aadhar_number) {
       return toast.error('All fields are required');
     }
@@ -195,8 +198,9 @@ export default function Page() {
     });
   };
 
-  const handleRegisterFounderDetails = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleRegisterFounderDetails = async (e: React.MouseEvent<HTMLButtonElement>) => {
     // console.log('founderDetails', founderDetails);
+    e.preventDefault();
     if (
       !founderDetails.name ||
       !founderDetails.email ||
@@ -363,11 +367,11 @@ export default function Page() {
 
                 <div className="flex flex-row justify-between">
                   <button
-                    onClick={async e => {
-                      let res = await handleRegisterFounderDetails(e);
-                      if (res?.status === 200) {
+                    type="submit"
+                    onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                      let res = handleRegisterFounderDetails(e);
+                      if (res && 'status' in res && res.status === 200) {
                         setPage(page + 1);
-                        return;
                       }
                     }}
                     className="w-200 flex justify-end rounded-md bg-blue-500 px-4 py-2 text-lg font-semibold text-white shadow transition-colors duration-300 hover:bg-blue-600 "
@@ -416,11 +420,11 @@ export default function Page() {
                     Back
                   </button>
                   <button
-                    onClick={async e => {
-                      let res = await handleRegisterFounderVerificationData(e);
-                      if (res?.status === 200) {
+                    type="submit"
+                    onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                      let res = handleRegisterFounderVerificationData(e);
+                      if (res && 'status' in res && res.status === 200) {
                         setPage(page + 1);
-                        return;
                       }
                     }}
                     className="w-200 flex justify-end rounded-md bg-blue-500 px-4 py-2 text-lg font-semibold text-white shadow transition-colors duration-300 hover:bg-blue-600 "
@@ -589,84 +593,15 @@ export default function Page() {
                   </button>
                 </div>
               </div>
-              )}
-              {page === 5 && (
-                <div className="flex flex-col space-y-5">
-                  <h6 className="mt-4 flex justify-center">Documents</h6>
-                  <h6 className="justify-left flex">Udhyam Aadhar</h6>
-
-                  <div className="flex w-full items-center flex-col  justify-center">
-                    <label
-                      for="dropzone-file"
-                      className="dark:hover:bg-bray-800 flex h-32 w-full cursor-pointer flex-col items-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600"
-                    >
-                      <div className="flex flex-col items-center justify-center pb-6 pt-5">
-                        <svg
-                          className="mb-4 h-8 w-8 text-gray-500 dark:text-gray-400"
-                          aria-hidden="true"
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 20 16"
-                        >
-                          <path
-                            stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
-                          />
-                        </svg>
-                        <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                          <span className="font-semibold">Click to upload</span> Udhyam Aadhar
-                        </p>
-                      </div>
-                      <input
-                        id="dropzone-file"
-                        type="file"
-                        onChange={handleUdhyamFileChange}
-                        className="hidden"
-                      />
-                    </label>
-
-                    {udhyamFile && (
-                      <div className="file-preview mt-4 overflow-hidden shadow-2xl w-[50%]">
-                        <img
-                          src={udhyamFile}
-                          alt="Preview"
-                          style={{ width: '100%', height: '100%' }}
-                        />
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="flex flex-row justify-between">
-                    <button
-                      onClick={() => setPage(page - 1)}
-                      className="w-200 flex justify-end rounded-md bg-blue-500 px-4 py-2 text-lg font-semibold text-white shadow transition-colors duration-300 hover:bg-blue-600 "
-                    >
-                      Back
-                    </button>
-                    <button
-                      onClick={async (e) => {
-                        await checkUdhyamVerification(e);
-                        setPage(page + 1);
-                      }}
-                      className="w-200 flex justify-end rounded-md bg-blue-500 px-4 py-2 text-lg font-semibold text-white shadow transition-colors duration-300 hover:bg-blue-600 "
-                    >
-                      Next
-                    </button>
-                  </div>
-                </div>
             )}
-
-            {page === 6 && (
-                <div className="flex flex-col space-y-5">
+            {page === 5 && (
+              <div className="flex flex-col space-y-5">
                 <h6 className="mt-4 flex justify-center">Documents</h6>
-                <h6 className="justify-left flex">Tax Return File</h6>
+                <h6 className="justify-left flex">Udhyam Aadhar</h6>
 
-                <div className="flex w-full items-center flex-col  justify-center">
+                <div className="flex w-full flex-col items-center  justify-center">
                   <label
-                    for="dropzone-file"
+                    htmlFor="dropzone-file"
                     className="dark:hover:bg-bray-800 flex h-32 w-full cursor-pointer flex-col items-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600"
                   >
                     <div className="flex flex-col items-center justify-center pb-6 pt-5">
@@ -686,7 +621,76 @@ export default function Page() {
                         />
                       </svg>
                       <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                        <span className="font-semibold">Click to upload</span> Tax Return File 
+                        <span className="font-semibold">Click to upload</span> Udhyam Aadhar
+                      </p>
+                    </div>
+                    <input
+                      id="dropzone-file"
+                      type="file"
+                      onChange={handleUdhyamFileChange}
+                      className="hidden"
+                    />
+                  </label>
+
+                  {udhyamFile && (
+                    <div className="file-preview mt-4 w-[50%] overflow-hidden shadow-2xl">
+                      <img
+                        src={udhyamFile}
+                        alt="Preview"
+                        style={{ width: '100%', height: '100%' }}
+                      />
+                    </div>
+                  )}
+                </div>
+
+                <div className="flex flex-row justify-between">
+                  <button
+                    onClick={() => setPage(page - 1)}
+                    className="w-200 flex justify-end rounded-md bg-blue-500 px-4 py-2 text-lg font-semibold text-white shadow transition-colors duration-300 hover:bg-blue-600 "
+                  >
+                    Back
+                  </button>
+                  <button
+                    onClick={async e => {
+                      await checkUdhyamVerification(e);
+                      setPage(page + 1);
+                    }}
+                    className="w-200 flex justify-end rounded-md bg-blue-500 px-4 py-2 text-lg font-semibold text-white shadow transition-colors duration-300 hover:bg-blue-600 "
+                  >
+                    Next
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {page === 6 && (
+              <div className="flex flex-col space-y-5">
+                <h6 className="mt-4 flex justify-center">Documents</h6>
+                <h6 className="justify-left flex">Tax Return File</h6>
+
+                <div className="flex w-full flex-col items-center  justify-center">
+                  <label
+                    htmlFor="dropzone-file"
+                    className="dark:hover:bg-bray-800 flex h-32 w-full cursor-pointer flex-col items-center rounded-lg border-2 border-dashed border-gray-300 bg-gray-50 hover:bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+                  >
+                    <div className="flex flex-col items-center justify-center pb-6 pt-5">
+                      <svg
+                        className="mb-4 h-8 w-8 text-gray-500 dark:text-gray-400"
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 20 16"
+                      >
+                        <path
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+                        />
+                      </svg>
+                      <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+                        <span className="font-semibold">Click to upload</span> Tax Return File
                       </p>
                     </div>
                     <input
@@ -698,7 +702,7 @@ export default function Page() {
                   </label>
 
                   {taxReturnFile && (
-                    <div className="file-preview mt-4 overflow-hidden shadow-2xl w-[50%]">
+                    <div className="file-preview mt-4 w-[50%] overflow-hidden shadow-2xl">
                       <img
                         src={taxReturnFile}
                         alt="Preview"
@@ -716,7 +720,7 @@ export default function Page() {
                     Back
                   </button>
                   <button
-                    onClick={async (e) => {
+                    onClick={async e => {
                       await checkTaxReturnVerification(e);
                       toast.success('SME Registered Successfully');
                     }}

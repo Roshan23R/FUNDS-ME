@@ -21,14 +21,14 @@ export default function Page() {
 
   // Calculate total deposit
   useEffect(() => {
-    const depositTotal = depositData.reduce((acc, curr) => acc + parseFloat(curr.amount), 0);
+    const depositTotal:number = depositData.reduce((acc, curr) => acc + curr.amount, 0);
     setTotalDeposit(depositTotal);
   }, []);
 
   // Calculate total loan borrowed
   useEffect(() => {
-    const loanBorrowedTotal = loanBorrowedData.reduce(
-      (acc, curr) => acc + parseFloat(curr.loan_amount),
+    const loanBorrowedTotal:number = loanBorrowedData.reduce(
+      (acc, curr) => acc + curr.loan_amount,
       0
     );
     setTotalLoanBorrowed(loanBorrowedTotal);
@@ -36,8 +36,8 @@ export default function Page() {
 
   // Calculate total loan repaid
   useEffect(() => {
-    const loanRepayedTotal = loanRepayedData.reduce(
-      (acc, curr) => acc + parseFloat(curr.paid_amount),
+    const loanRepayedTotal:number = loanRepayedData.reduce(
+      (acc, curr) => acc + curr.paid_amount,
       0
     );
     setTotalLoanRepayed(loanRepayedTotal);

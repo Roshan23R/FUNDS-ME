@@ -6,7 +6,7 @@ import Image from 'next/image';
 const Success = () => {
     return (<div className="guess-card-bg mx-auto flex h-[80vh] w-[40%] flex-col items-center justify-center">
     <div className="border-3 h-[50%] w-1/2 overflow-hidden rounded-lg shadow-xl shadow-[#172234]">
-      <Image src="/images/sucess-guess.png" width={603} height={603} />
+      <Image src="/images/sucess-guess.png" width={603} height={603} alt='sucess-guess'/>
     </div>
     <h1 className="mt-2 text-xl font-bold">Great Guess !!</h1>
     <p className="mt-2 text-center">

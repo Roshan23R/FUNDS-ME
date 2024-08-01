@@ -221,8 +221,8 @@ const StatsSection = () => {
         <div>
           <h2 className="mb-4 text-lg font-semibold">Members</h2>
           <div className="grid w-full grid-cols-3 gap-5">
-            {SME.slice(0,10).map(data => (
-              <MemberCard data={data} />
+            {SME.slice(0,10).map((data, index) => (
+              <MemberCard data={data} key={index}/>
             ))}
           </div>
         </div>

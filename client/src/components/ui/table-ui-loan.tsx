@@ -6,8 +6,8 @@ type TableUiLoanProps = {
     loan_amount: string;
     start_date?: string;
     loan_start_date?: string;
-    interest_rate?: string;
-    amount_dues: { amount_due: string }[];
+    interest_rate?: number;
+    amount_dues: { amount_due: number }[];
     status?: string;
   }[];
 };

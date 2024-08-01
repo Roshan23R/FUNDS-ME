@@ -11,7 +11,7 @@ export default function Home() {
         <div className="flex w-full max-w-[610px] flex-col items-start gap-6">
           <div className="flex flex-col items-start gap-4">
             <h1 className="font-heading text-[2.5rem]/[3rem] font-medium uppercase">
-              Empowering SME's, Fueling Innovation
+              {`Empowering SME's, Fueling Innovation`}
             </h1>
             <p className="text-[1rem]/[1.5rem] font-light">
               Empowering SMEs through collective lending. Bid for loans, earn interest on
@@ -19,7 +19,7 @@ export default function Home() {
               wisely, and watch your business thrive.
             </p>
           </div>
-          <Button><Link href="/sme/profile/123">Let's Go</Link></Button>
+          <Button><Link href="/sme/profile/123">{`Let's Go`}</Link></Button>
         </div>
         <div className="">
           <Image src={'/images/hero.png'} alt="funds-me" width={538} height={538} priority />
@@ -28,7 +28,7 @@ export default function Home() {
       <HowToPlay />
       <section className="container mx-auto flex w-full max-w-screen-2xl flex-col items-center justify-center gap-10 px-[100px] pb-[150px] pt-[100px]">
         <div className=" text-center w-full font-heading text-[1.3rem]/[1.9rem] font-medium">
-          <h2 className='text-3xl whitespace-nowrap mt-4 uppercase '>Power We Are Giving to sme's</h2>
+          <h2 className='text-3xl whitespace-nowrap mt-4 uppercase '>Power We Are Giving to MSME</h2>
         </div>
         <div className="flex items-start gap-5">
           <div className="flex flex-col items-center gap-6">

@@ -95,8 +95,8 @@ const CommitteePage = () => {
                   <>
                     <ul>
                       <li className="mt-2">
-                        By joining the committee, you agree to abide by the platform's rules
-                        and regulations.
+                        {`By joining the committee, you agree to abide by the platform's rules
+                        and regulations.`}
                       </li>
                       <li className="mt-2">
                         Members consent to undergo verification processes for authentication
@@ -115,8 +115,8 @@ const CommitteePage = () => {
                         registration.
                       </li>
                       <li className="mt-2">
-                        Users understand that last year's bank statements may be required for
-                        verification and authorization.
+                        {`Users understand that last year's bank statements may be required for
+                        verification and authorization.`}
                       </li>
                       <li className="mt-2">
                         The platform reserves the right to take legal action against fraudulent

@@ -7,10 +7,6 @@ export const siteConfig = {
   description: '',
   mainNav: [
     {
-      title: 'Home',
-      href: '/home'
-    },
-    {
       title: 'Committee-List',
       href: '/'
     },

@@ -52,19 +52,24 @@ Financial Inclusion
 
 ## Platform
 ![WhatsApp Image 2024-05-12 at 09 17 41_8380d093](https://github.com/Kali-Decoder/hack-bangalore/assets/82640582/fb61dec5-0eb9-4559-913c-ce22bbd716eb)
-![image](https://github.com/Kali-Decoder/hack-bangalore/assets/82640582/c5c04a6f-ce3a-43b8-a2a6-cd28c0e7c14b)
-![image](https://github.com/Kali-Decoder/hack-bangalore/assets/82640582/97c12a7f-de0c-4207-8677-b4d69dcf2a3a)
-![image](https://github.com/Kali-Decoder/hack-bangalore/assets/82640582/e1815e21-5f31-4a76-9515-b09cae625884)
-![image](https://github.com/Kali-Decoder/hack-bangalore/assets/82640582/4222896d-a5be-4296-a808-01efd06dd859)
-![image](https://github.com/Kali-Decoder/hack-bangalore/assets/82640582/3fb7b2ea-b952-47bd-a680-4ee655d0f73f)
-![image](https://github.com/Kali-Decoder/hack-bangalore/assets/82640582/78f604db-7151-4be6-98d3-ea4087d6e466)
-![image](https://github.com/Kali-Decoder/hack-bangalore/assets/82640582/73cf794f-0b22-4db3-b764-ccafa2d000ef)
 
+![1](https://github.com/user-attachments/assets/dcbffb2e-b88a-4522-9e22-9bed86bac825)
 
+![2](https://github.com/user-attachments/assets/f3eb14cb-a959-4d40-ae04-863a70f8784f)
 
+![3](https://github.com/user-attachments/assets/6a346cbb-8d35-4073-a844-7d05d91b82f7)
 
+![5](https://github.com/user-attachments/assets/e2d9b08f-23d0-4a44-b13c-c916ef9d765e)
 
+![4 1](https://github.com/user-attachments/assets/0a49c28a-d031-45e8-84f5-e02ed9585843)
 
+![4 2](https://github.com/user-attachments/assets/cce92f06-816d-44cd-a8dc-aadd66f48109)
+
+![4](https://github.com/user-attachments/assets/bf0c4d05-1bd4-4551-a889-b05555ca764a)
+
+![6](https://github.com/user-attachments/assets/72fda098-0e29-4723-b32c-3070afcf28a9)
+
+![7](https://github.com/user-attachments/assets/c71dfa8a-8019-46d2-8b10-180704968e49)
 
 
 

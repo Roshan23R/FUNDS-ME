@@ -1,17 +1,10 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { Card } from '@/components/cards/card';
-import { LeadBoardCard } from '@/components/cards/leadboard-card';
-import SidebarNav from '@/components/layouts/sidebar-nav';
 import { Shell } from '@/components/shell';
-import { Button } from '@/components/ui/button';
 import TableUiRepayed from '@/components/ui/table-ui-repayed';
 import TableUiDeposit from '@/components/ui/table-ui-deposit';
 import TableUiLoan from '@/components/ui/table-ui-loan';
-import { siteConfig } from '@/config/site';
-import { cn } from '@/lib/utils';
-import Image from 'next/image';
-import Link from 'next/link';
 import {
   depositHeadings,
   loanBorrowedHeadings,
@@ -20,26 +13,33 @@ import {
   depositData,
   loanBorrowedData
 } from '@/lib/data';
+
 export default function Page() {
- const [totalDeposit, setTotalDeposit] = useState(0);
+  const [totalDeposit, setTotalDeposit] = useState(0);
   const [totalLoanBorrowed, setTotalLoanBorrowed] = useState(0);
   const [totalLoanRepayed, setTotalLoanRepayed] = useState(0);
 
   // Calculate total deposit
   useEffect(() => {
-    const depositTotal = depositData.reduce((acc, curr) => acc + curr.amount, 0);
+    const depositTotal = depositData.reduce((acc, curr) => acc + parseFloat(curr.amount), 0);
     setTotalDeposit(depositTotal);
   }, []);
 
   // Calculate total loan borrowed
   useEffect(() => {
-    const loanBorrowedTotal = loanBorrowedData.reduce((acc, curr) => acc + curr.loan_amount, 0);
+    const loanBorrowedTotal = loanBorrowedData.reduce(
+      (acc, curr) => acc + parseFloat(curr.loan_amount),
+      0
+    );
     setTotalLoanBorrowed(loanBorrowedTotal);
   }, []);
 
   // Calculate total loan repaid
   useEffect(() => {
-    const loanRepayedTotal = loanRepayedData.reduce((acc, curr) => acc + curr.paid_amount, 0);
+    const loanRepayedTotal = loanRepayedData.reduce(
+      (acc, curr) => acc + parseFloat(curr.paid_amount),
+      0
+    );
     setTotalLoanRepayed(loanRepayedTotal);
   }, []);
 
@@ -53,18 +53,28 @@ export default function Page() {
               src="/images/user.png"
               alt="Rounded avatar"
             />
-            <p className=" ml-3 text-xl">House of Paints</p>
-            <span className="me-2 rounded-xl bg-[#DC7DA63D] px-2.5  py-0.5 text-xs text-white shadow-none ">
+            <p className="ml-3 text-xl">House of Paints</p>
+            <span className="me-2 rounded-xl bg-[#DC7DA63D] px-2.5 py-0.5 text-xs text-white shadow-none">
               1Ay00011DY...
             </span>
           </div>
           <p className="mt-10 text-xl">
-            Total Deposits : <span className="text-[#ECB278]">4,000</span>
+            Total Deposits : <span className="text-[#ECB278]">{totalDeposit.toLocaleString()}</span>
           </p>
         </div>
         <div className="mx-auto flex w-full flex-col items-center justify-between gap-7">
-          <Card className="w-[100%]" title="Deposit" description={`Total Deposit : ${totalDeposit.toLocaleString()}`}>
-            <TableUiDeposit headings={depositHeadings} rowsData={depositData} />
+          <Card
+            className="w-[100%]"
+            title="Deposit"
+            description={`Total Deposit : ${totalDeposit.toLocaleString()}`}
+          >
+            <TableUiDeposit
+              headings={depositHeadings}
+              rowsData={depositData.map(item => ({
+                ...item,
+                amount: item.amount.toString() // Ensure amount is a string
+              }))}
+            />
           </Card>
 
           <Card
@@ -72,7 +82,13 @@ export default function Page() {
             title="Loan Borrowed"
             description={`Total Loan Dues : ${totalLoanBorrowed.toLocaleString()}`}
           >
-            <TableUiLoan headings={loanBorrowedHeadings} rowsData={loanBorrowedData} />
+            <TableUiLoan
+              headings={loanBorrowedHeadings}
+              rowsData={loanBorrowedData.map(item => ({
+                ...item,
+                loan_amount: item.loan_amount.toString() // Ensure loan_amount is a string
+              }))}
+            />
           </Card>
 
           <Card
@@ -80,7 +96,13 @@ export default function Page() {
             title="Loan Repayed"
             description={`Loan Payed Till : ${totalLoanRepayed.toLocaleString()}`}
           >
-            <TableUiRepayed headings={loanRepayedHeadings} rowsData={loanRepayedData} />
+            <TableUiRepayed
+              headings={loanRepayedHeadings}
+              rowsData={loanRepayedData.map(item => ({
+                ...item,
+                paid_amount: item.paid_amount.toString() // Ensure paid_amount is a string
+              }))}
+            />
           </Card>
         </div>
       </Shell>

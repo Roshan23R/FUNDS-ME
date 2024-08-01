@@ -8,10 +8,10 @@ import {
   FaMoneyCheckAlt
 } from 'react-icons/fa';
 import { useRouter } from 'next/navigation';
-import { useState, useRef, useEffect,useCallback } from 'react';
-import useRazorpay from "react-razorpay";
+import { useState, useRef, useEffect, useCallback } from 'react';
+import useRazorpay from 'react-razorpay';
 import { toast } from '../../../../node_modules/react-hot-toast/dist/index';
-import {committeesData} from "@/lib/data";
+import { committeesData } from '@/lib/data';
 const CommitteePage = () => {
   const [showModal, setShowModal] = useState(false);
   const [depositActive, setDepositActive] = useState(false);
@@ -19,34 +19,29 @@ const CommitteePage = () => {
   const router = useRouter();
   const handlePayment = useCallback(async () => {
     const options = {
-      key: "rzp_test_qxK6BfwVnAlQAn",
-      amount: "3000",
-      currency: "INR",
-      name: "fund sme",
-      description: "Test Transaction",
-      image: "https://example.com/your_logo",
-      order_id:"order_9A33XWu170gUtm",
-      handler: (res) => {
-        console.log(res);
-      },
+      key: 'rzp_test_qxK6BfwVnAlQAn',
+      amount: '3000',
+      currency: 'INR',
+      name: 'fund sme',
+      description: 'Test Transaction',
+      image: 'https://example.com/your_logo',
+      order_id: 'order_9A33XWu170gUtm',
       prefill: {
-        name: "Piyush Garg",
-        email: "youremail@example.com",
-        contact: "9999999999",
+        name: 'Piyush Garg',
+        email: 'youremail@example.com',
+        contact: '9999999999'
       },
       notes: {
-        address: "Razorpay Corporate Office",
+        address: 'Razorpay Corporate Office'
       },
       theme: {
-        color: "#3399cc",
-      },
+        color: '#3399cc'
+      }
     };
 
     const rzpay = new Razorpay(options);
     rzpay.open();
   }, [Razorpay]);
-
- 
 
   const JoinCommitteeModal = () => {
     return (
@@ -66,7 +61,6 @@ const CommitteePage = () => {
                 >
                   <svg
                     className="h-3 w-3"
-                 
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
                     viewBox="0 0 14 14"
@@ -86,15 +80,20 @@ const CommitteePage = () => {
               <div className="h-[25%] space-y-4 overflow-y-scroll p-4 md:p-5">
                 {depositActive ? (
                   <>
-                     <button  className='bg-blue-500 text-white px-3 py-2 rounded-xl shadow-md' onClick={()=>{
-                        window.open('https://rzp.io/i/hAYIOcmKy','_blank');
+                    <button
+                      className="rounded-xl bg-blue-500 px-3 py-2 text-white shadow-md"
+                      onClick={() => {
+                        window.open('https://rzp.io/i/hAYIOcmKy', '_blank');
                         toast.success('Committee Joined Successfully');
                         router.push('/committees/123');
-                     }}>Pay With Razor Pay</button>
+                      }}
+                    >
+                      Pay With Razor Pay
+                    </button>
                   </>
                 ) : (
                   <>
-                    <dl type="A">
+                    <ul>
                       <li className="mt-2">
                         By joining the committee, you agree to abide by the platform's rules
                         and regulations.
@@ -135,7 +134,7 @@ const CommitteePage = () => {
                         Any disputes or discrepancies will be resolved through arbitration as
                         per platform guidelines.
                       </li>
-                    </dl>
+                    </ul>
 
                     <div className="flex items-center rounded-b border-t border-gray-200 p-4 md:p-5 dark:border-gray-600">
                       <button
@@ -173,27 +172,58 @@ const CommitteePage = () => {
             <Card className="" key={index}>
               <h2 className="mb-4 text-lg font-semibold">Committee {index + 1}</h2>
               <div className="mb-2 flex items-center">
-                <p className="text-sm"> <FaCalendarAlt className="mr-2 text-yellow-500" size={20}/> Start Date: <br/> <span className='mt-4 text-primary-300'> {committee.startDate}</span></p>
+                <p className="text-sm">
+                  {' '}
+                  <FaCalendarAlt className="mr-2 text-yellow-500" size={20} /> Start Date:{' '}
+                  <br /> <span className="mt-4 text-primary-300"> {committee.startDate}</span>
+                </p>
               </div>
               <div className="mb-2 flex items-center">
-                <FaUsers className="mr-2 text-yellow-500"  size={20}/>
-                <p className="text-sm">Members Limit: <span className=' text-primary-300  text-md mx-3'> {committee.membersLimit} </span></p>
+                <FaUsers className="mr-2 text-yellow-500" size={20} />
+                <p className="text-sm">
+                  Members Limit:{' '}
+                  <span className=" text-md  mx-3 text-primary-300">
+                    {' '}
+                    {committee.membersLimit}{' '}
+                  </span>
+                </p>
               </div>
               <div className="mb-2 flex items-center">
-                <FaMoneyBillAlt className="mr-2 text-yellow-500"  size={20}/>
-                <p className="text-sm">Total Fund: <span className=' text-primary-300  text-md mx-3'> {committee.totalFund} </span></p>
+                <FaMoneyBillAlt className="mr-2 text-yellow-500" size={20} />
+                <p className="text-sm">
+                  Total Fund:{' '}
+                  <span className=" text-md  mx-3 text-primary-300">
+                    {' '}
+                    {committee.totalFund}{' '}
+                  </span>
+                </p>
               </div>
               <div className="mb-2 flex items-center">
-                <FaMoneyCheckAlt className="mr-2 text-yellow-500"  size={20}/>
-                <p className="text-sm">SIP Amount: <span className=' text-primary-300  text-md mx-3'> {committee.SIPAmount} </span></p>
+                <FaMoneyCheckAlt className="mr-2 text-yellow-500" size={20} />
+                <p className="text-sm">
+                  SIP Amount:{' '}
+                  <span className=" text-md  mx-3 text-primary-300">
+                    {' '}
+                    {committee.SIPAmount}{' '}
+                  </span>
+                </p>
               </div>
               <div className="mb-2 flex items-center">
-                <FaClock className="mr-2 text-yellow-500"  size={20}/>
-                <p className="text-sm">Tenure: <span className=' text-primary-300  text-md mx-3'> {committee.tenure} </span></p>
+                <FaClock className="mr-2 text-yellow-500" size={20} />
+                <p className="text-sm">
+                  Tenure:{' '}
+                  <span className=" text-md  mx-3 text-primary-300"> {committee.tenure} </span>
+                </p>
               </div>
               <div className="mb-2 flex items-center">
-                <FaCalendarAlt className="mr-2 text-yellow-500"  size={20}/>
-                <p className="text-sm">SIP Period: <span className=' text-primary-300  text-md mx-3'> {committee.SIPPeriod} </span></p>
+                <FaCalendarAlt className="mr-2 text-yellow-500" size={20} />
+                <p className="text-sm">
+                  SIP Period:{' '}
+                  <span className=" text-md  mx-3 text-primary-300">
+                    {' '}
+                    {committee.SIPPeriod}{' '}
+                  </span>
+                </p>
               </div>
               <button
                 onClick={() => setShowModal(true)}

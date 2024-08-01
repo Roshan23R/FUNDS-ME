@@ -5,7 +5,7 @@ import { toast } from 'react-hot-toast';
 import MemberCard from '@/components/ui/member-card';
 import {SME} from '@/lib/SME';
 
-const delay = ms => new Promise(res => setTimeout(res, ms));
+const delay = (ms: number): Promise<void> => new Promise(res => setTimeout(res, ms));
 const StatsSection = () => {
   const [showBidModal, setShowBidModal] = useState(false);
   const [maxBid, setMaxBid] = useState(1.25);
@@ -83,7 +83,7 @@ const StatsSection = () => {
                     </label>
                     <input
                       onChange={e => {
-                        setYourBid(e.target.value);
+                        setYourBid(parseInt(e.target.value));
                       }}
                       className="rounded-md border bg-transparent px-3 py-2 text-white "
                       max="10"
